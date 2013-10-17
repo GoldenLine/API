@@ -2,7 +2,7 @@
 
 W OAuth2 “flow” autoryzacji został uproszczony do minimum i wymaga od klienta (aplikacji) zaledwie 4 kroków.
 
-1. Klient wysyła żądanie do serwera OAuth - w celu późniejszego pobrania *kodu autoryzacyjnego* - na adres `http://goldenline.pl/oauth/v2/auth?client_id=APPLICATION_ID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE`, gdzie zostanie wyświetlony użytkownikowi formularz autoryzacji klienta (aplikacji).
+1. Klient wysyła żądanie do serwera OAuth - w celu późniejszego pobrania *kodu autoryzacyjnego* - na adres `https://www.goldenline.pl/oauth/v2/auth?client_id=APPLICATION_ID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE[&state=STATE]`, gdzie zostanie wyświetlony użytkownikowi formularz autoryzacji klienta (aplikacji).
 
     <table>
         <tr>
@@ -25,12 +25,16 @@ W OAuth2 “flow” autoryzacji został uproszczony do minimum i wymaga od klien
             * full_profile - dostęp do “dodatkowych” danych użytkownika takich jak edukacja, doświadczenie zawodowe, etc
             * contacts - dostęp do kontaktów użytkownika</td>
         </tr>
+        <tr>
+            <th>STATE</th>
+            <td>Parametr opcjonalny. Umożliwia przesłanie stanu pomiędzy serwerem autoryzacji, a klientem. Klient powinien użyć go jako token uniemożliwiający atak CSRF, aczkolwiek inne zastosowania są dopuszczalne.</td>
+        </tr>
     </table>
 
     Przykład:
 
     ```
-    http://goldenline.pl/oauth/v2/auth?client_id=1_5fw8bn7dk084gkwkskc0o80wsw0wskcck08wc4gow080cwc0gw&redirect_uri=http%3A%2F%2Fwww.example.com&response_type=code&scope=email%20full_profile%20contacts
+    https://www.goldenline.pl/oauth/v2/auth?client_id=1_5fw8bn7dk084gkwkskc0o80wsw0wskcck08wc4gow080cwc0gw&redirect_uri=http%3A%2F%2Fwww.example.com&response_type=code&scope=email%20full_profile%20contacts&state=xyz_csrf
     ```
 
 2. Po potwierdzeniu autoryzacji, przez użytkownika, serwer OAuth przekierowuje użytkownika na adres REDIRECT_URI wraz z kodem autoryzacyjnym, w “query stringu”, pod kluczem `code`.
@@ -38,14 +42,16 @@ W OAuth2 “flow” autoryzacji został uproszczony do minimum i wymaga od klien
     Przykład:
 
     ```
-    http://example.com/?code=YWVm2E2MzY3MjZjODIyM2YzMjdMzM3YjBhNzg1YjBhMTVjMTE0NjgxMzBhOTM2YTJmN2VmOTIyNmUwMTI2Nw
+    http://example.com/?code=YWVm2E2MzY3MjZjODIyM2YzMjdMzM3YjBhNzg1YjBhMTVjMTE0NjgxMzBhOTM2YTJmN2VmOTIyNmUwMTI2Nw&state=xyz_csrf
     ```
 
     Kod autoryzacyjny jest ważny 30 sekund.
 
     Istnieje możliwość, że użytkownik odmówi autoryzacji klienta. Obsługę takiego przypadku opisaliśmy [tutaj] (/authorization/handling_declined_authorization.md).
 
-3. Od teraz teraz klient jest w stanie uzyskać tzw `Access Token`, których później posłuży do autoryzowania ządań do API. Aby to zrobic klient musi wykonać żądanie do serwera (tym razem po stronie backendu!) na adres `http://goldenline.pl/oauth/v2/token?grant_type=authorization_code&code=AUTH_CODE&redirect_uri=REDIRECT_URI&client_id=CLIENT_ID&client_secret=CLIENT_SECRET`.
+    Proszę zwrócić uwagę na parametr `state` obecny w “query stringu”. Jest on dołączony - w niezmienionej formie - do odpowiedzi tylko, jeżeli był obecny w żądaniu do serwera autoryzacji.
+
+3. Od teraz teraz klient jest w stanie uzyskać tzw `Access Token`, których później posłuży do autoryzowania ządań do API. Aby to zrobic klient musi wykonać żądanie do serwera (tym razem po stronie backendu!) na adres `https://www.goldenline.pl/oauth/v2/token?grant_type=authorization_code&code=AUTH_CODE&redirect_uri=REDIRECT_URI&client_id=CLIENT_ID&client_secret=CLIENT_SECRET`.
 
     <table>
         <tr>
@@ -73,7 +79,7 @@ W OAuth2 “flow” autoryzacji został uproszczony do minimum i wymaga od klien
     Przykład:
     
     ```
-    http://goldenline.pl/oauth/v2/token?grant_type=authorization_code&code=YWVmN2E2MzY3MjZjODIyM2YzMjdiMzM3YjBhNzg1YjBhMTVjMTE0NjgxMzBhOTM2YTJmN2VmOTIyNmUwMTI2Nw&redirect_uri=REDIRECT_URI&client_id=1_5fw8bn7dk084gkwkskc0o80wsw0wskcck08wc4gow080cwc0gw&client_secret=58ceu78y1joc0owk0wock40kgos0k48040skk4ksoc8g0840ww
+    https://www.goldenline.pl/oauth/v2/token?grant_type=authorization_code&code=YWVmN2E2MzY3MjZjODIyM2YzMjdiMzM3YjBhNzg1YjBhMTVjMTE0NjgxMzBhOTM2YTJmN2VmOTIyNmUwMTI2Nw&redirect_uri=REDIRECT_URI&client_id=1_5fw8bn7dk084gkwkskc0o80wsw0wskcck08wc4gow080cwc0gw&client_secret=58ceu78y1joc0owk0wock40kgos0k48040skk4ksoc8g0840ww
     ```
 
     W odpowiedzi serwer OAuth wyślę tablicę w formacie JSONa z którego w prosty sposób klient może wyłuskać nowy `Access Token` znajdujący sie pod kluczen `access_token`.
@@ -111,13 +117,13 @@ W OAuth2 “flow” autoryzacji został uproszczony do minimum i wymaga od klien
         </tr>
         <tr>
             <th>refresh_token</th>
-            <td>Token, dzięki któremu klient może pobrać nowy, aktywny `Access Token`, gdy oryginalny straci ważność. Więcej informacji można znależć w sekcji ["Odświerzanie Access Tokena"] (/authorization/refreshing_access_token.md)</td>
+            <td>Token, dzięki któremu klient może pobrać nowy, aktywny `Access Token`, gdy oryginalny straci ważność.</td>
         </tr>
     </table>
 
     `Access Token` jest ważny przez 60 minut. Istnieje możliwość odświeżenia wygasłego `Access Tokena` wykorzystując `Refresh Token`, który został przesłany razem razem z nim. Przeczytać o tym można [w osobnej sekcji tej dokumentacji] (/autorization/refreshing_access_token.md).
 
-4. Posiadając `Access Token`, klient może już zacząć komunikować się z API. Aby wykonać uwierzytelnione zapytanie do API należy wywołać adres zasobu API wraz z dodatkowym nagłówkiem `Authorization: Bearer ACCESS_TOKEN`.
+4. Posiadając `Access Token`, klient może już zacząć komunikować się z API. Aby wykonać autoryzowane zapytanie do API należy wywołać adres zasobu API wraz z dodatkowym nagłówkiem `Authorization: Bearer ACCESS_TOKEN`.
 
     Przykład:
 

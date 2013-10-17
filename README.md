@@ -7,7 +7,7 @@ Jako warstwę prezentacji wybraliśmy standard HAL, a autoryzację żądań do A
 ## Autoryzacja
 
 * [Pobieranie Access Tokena] (/authorization/retrieving_access_token.md)
-* [Odświerzanie Access Tokena] (/authorization/refreshing_access_token.md)
+* [Odświeżanie Access Tokena] (/authorization/refreshing_access_token.md)
 * [Obsługa braku autoryzacji klienta] (/authorization/handling_declined_authorization.md)
 
 ## Dostepne zasoby API
@@ -16,16 +16,16 @@ Poniżej prezentujemy listę zasobów dostępnych w GoldenLine API. API jest ci�
 
 Prace nad zasobami, których adresy URI są ~~przekreślone~~, nie zostały jeszcze ukończone.
 
-* `GET goldenline.pl/api`
-* `GET goldenline.pl/api/users/{id}` - Dane użytkownika o identyfikatorze {id}
-* `GET goldenline.pl/api/me` - Dane obecnie autoryzowanego użytkownika
-* `GET goldenline.pl/api/users/{id}/cv` - Plik PDF z CV użytkownika o identyfikatorze {id}
-* `GET goldenline.pl/api/users/{id}/contacts` - Stronnicowana lista kontaktów użytkownika o identyfikatorze {id}
-* `GET goldenline.pl/api/firms` - Stronnicowana lista firm
-* `GET goldenline.pl/api/firms/{id}` - Dane firmy o identyfikatorze {id}
-* `GET goldenline.pl/api/firms/{id}/employees` - Stronnicowana lista pracowników firmy o identyfikatorze {id}
-* `GET goldenline.pl/api/job_ads` - Stronnicowana lista ofert pracy
-* `GET goldenline.pl/api/job_ads/{id}` - Dane oferty pracy o identyfikatorze {id}
+* `GET /api`
+* `GET /api/users/{id}` - Dane użytkownika o identyfikatorze {id}
+* `GET /api/me` - Dane obecnie autoryzowanego użytkownika
+* `GET /api/users/{id}/cv` - Plik PDF z CV użytkownika o identyfikatorze {id}
+* `GET /api/users/{id}/contacts` - Stronnicowana lista kontaktów użytkownika o identyfikatorze {id}
+* `GET /api/firms` - Stronnicowana lista firm
+* `GET /api/firms/{id}` - Dane firmy o identyfikatorze {id}
+* `GET /api/firms/{id}/employees` - Stronnicowana lista pracowników firmy o identyfikatorze {id}
+* `GET /api/job_ads` - Stronnicowana lista ofert pracy
+* `GET /api/job_ads/{id}` - Dane oferty pracy o identyfikatorze {id}
 
 ## Narzędzia
 

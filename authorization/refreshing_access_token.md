@@ -1,8 +1,8 @@
-# Odświerzanie Access Tokena
+# Odświeżanie Access Tokena
 
-Jak pisaliśmy w sekcji ["Pobieranie Access Tokena"] (/authorization/retrieving_access_token.md) `Access Token` jest ważny tylko 60 min. Istnieje jednak możliwość jego odświeżenia bez ponownego przepuszczania użytkownika przez pełen proces autoryzacji. Służy do tego `Refresh Token` przesłany razem z `Access Tokenem`.
+Jak pisaliśmy w sekcji ["Pobieranie Access Tokena"](../authorization/retrieving_access_token.md) `Access Token` jest ważny tylko 60 min. Istnieje jednak możliwość jego odświeżenia bez ponownego przepuszczania użytkownika przez pełen proces autoryzacji. Służy do tego `Refresh Token` przesłany razem z `Access Tokenem`.
 
-Aby odświeżyć `Access Token` klient (aplikacja) musi wykonać do serwera Oauth żadanie `http://golden2.localhost/app_dev.php/oauth/v2/token?grant_type=refresh_token&refresh_token=REFRESH_TOKEN&redirect_uri=REDIRECT_URI&client_id=CLIENT_ID&client_secret=CLIENT_SECRET`
+Aby odświeżyć `Access Token` klient (aplikacja) musi wykonać do serwera OAuth żadanie `https://www.goldenline.pl/oauth/v2/token?grant_type=refresh_token&refresh_token=REFRESH_TOKEN&redirect_uri=REDIRECT_URI&client_id=CLIENT_ID&client_secret=CLIENT_SECRET`
 
 <table>
         <tr>
@@ -19,7 +19,7 @@ Aby odświeżyć `Access Token` klient (aplikacja) musi wykonać do serwera Oaut
         </tr>
         <tr>
             <th>REFRESH_TOKEN</th>
-            <td>`Refresh Token` uzyskany w 3-cim kroku w sekcji ["Pobieranie Access Tokena"] (/authorization/retrieving_access_token.md)</td>
+            <td>`Refresh Token` uzyskany w 3-cim kroku w sekcji "Pobieranie Access Tokena"</td>
         </tr>
         <tr>
             <th>CLIENT_SECRET</th>
@@ -30,7 +30,7 @@ Aby odświeżyć `Access Token` klient (aplikacja) musi wykonać do serwera Oaut
 Przykład:
 
 ```
-http://golden2.localhost/app_dev.php/oauth/v2/token?grant_type=refresh_token&refresh_token=NjQ1MzViYmM2YDSFG5455rwOTMxNzY5OWEyOGRiMDhlNzJhZGFkNDFmYjBkNmYzMmI0YjJjMTFhNGI3MTlkZA&redirect_uri=http://www.example.com&client_id=1_5fw8bn7dk084ffgE4kc0o80wsw0wskcck08wc4gow080cwc0gw&client_secret=58ceu78y1joc0owk0wdgr8040skk4ksoc8g0840ww
+https://www.goldenline.pl/app_dev.php/oauth/v2/token?grant_type=refresh_token&refresh_token=NjQ1MzViYmM2YDSFG5455rwOTMxNzY5OWEyOGRiMDhlNzJhZGFkNDFmYjBkNmYzMmI0YjJjMTFhNGI3MTlkZA&redirect_uri=http://www.example.com&client_id=1_5fw8bn7dk084ffgE4kc0o80wsw0wskcck08wc4gow080cwc0gw&client_secret=58ceu78y1joc0owk0wdgr8040skk4ksoc8g0840ww
 ```
 
 W odpowiedzi serwer OAuth wyślę tablicę w formacie JSONa z którego w prosty sposób klient może wyłuskać nowy `Access Token` znajdujący sie pod kluczen `access_token`.
@@ -68,6 +68,8 @@ W odpowiedzi serwer OAuth wyślę tablicę w formacie JSONa z którego w prosty 
         </tr>
         <tr>
             <th>refresh_token</th>
-            <td>Token, dzięki któremu klient może pobrać nowy, aktywny `Access Token`, gdy oryginalny straci ważność. Więcej informacji można znależć w sekcji ["Odświerzanie Access Tokena"] (/authorization/refreshing_access_token.md)</td>
+            <td>Token, dzięki któremu klient może pobrać nowy, aktywny `Access Token`, gdy oryginalny straci ważność.</td>
         </tr>
 </table>
+
+Uwaga! `Refresh Token` jest ważny przez 14 dni od chwili jego wydania.
