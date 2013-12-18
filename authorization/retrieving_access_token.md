@@ -121,7 +121,7 @@ W OAuth2 “flow” autoryzacji został uproszczony do minimum i wymaga od klien
         </tr>
     </table>
 
-    `Access Token` jest ważny przez 60 minut. Istnieje możliwość odświeżenia wygasłego `Access Tokena` wykorzystując `Refresh Token`, który został przesłany razem razem z nim. Przeczytać o tym można [w osobnej sekcji tej dokumentacji] (/autorization/refreshing_access_token.md).
+    `Access Token` jest ważny przez 60 minut. Istnieje możliwość odświeżenia wygasłego `Access Tokena` wykorzystując `Refresh Token`, który został przesłany razem razem z nim. Przeczytać o tym można [w osobnej sekcji tej dokumentacji] (/authorization/refreshing_access_token.md).
 
 4. Posiadając `Access Token`, klient może już zacząć komunikować się z API. Aby wykonać autoryzowane zapytanie do API należy wywołać adres zasobu API wraz z dodatkowym nagłówkiem `Authorization: Bearer ACCESS_TOKEN`.
 
