@@ -30,7 +30,7 @@ Aby odświeżyć `Access Token` klient (aplikacja) musi wykonać do serwera OAut
 Przykład:
 
 ```
-https://www.goldenline.pl/app_dev.php/oauth/v2/token?grant_type=refresh_token&refresh_token=NjQ1MzViYmM2YDSFG5455rwOTMxNzY5OWEyOGRiMDhlNzJhZGFkNDFmYjBkNmYzMmI0YjJjMTFhNGI3MTlkZA&redirect_uri=http://www.example.com&client_id=1_5fw8bn7dk084ffgE4kc0o80wsw0wskcck08wc4gow080cwc0gw&client_secret=58ceu78y1joc0owk0wdgr8040skk4ksoc8g0840ww
+https://www.goldenline.pl/oauth/v2/token?grant_type=refresh_token&refresh_token=NjQ1MzViYmM2YDSFG5455rwOTMxNzY5OWEyOGRiMDhlNzJhZGFkNDFmYjBkNmYzMmI0YjJjMTFhNGI3MTlkZA&redirect_uri=http://www.example.com&client_id=1_5fw8bn7dk084ffgE4kc0o80wsw0wskcck08wc4gow080cwc0gw&client_secret=58ceu78y1joc0owk0wdgr8040skk4ksoc8g0840ww
 ```
 
 W odpowiedzi serwer OAuth wyślę tablicę w formacie JSONa z którego w prosty sposób klient może wyłuskać nowy `Access Token` znajdujący sie pod kluczen `access_token`.

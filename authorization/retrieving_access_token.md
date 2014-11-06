@@ -128,8 +128,8 @@ W OAuth2 “flow” autoryzacji został uproszczony do minimum i wymaga od klien
     Przykład:
 
     ```
-    GET /api/users/474258
-    Host: www.goldenline.pl
-    Accept: applicaton/hal+json
+    GET /users/474258
+    Host: api.goldenline.pl
+    Accept: applicaton/vnd.goldenline.v2+json
     Authorization: Bearer M2Y5YTcxYjAxYzY4MzlkZDcwY2YwMDIwZTRhY2UyZDBmNjkzYjgyMDhkYzI4YzMxOTcyMjBkODcwNzQ1YmRiMw
     ```

@@ -16,16 +16,16 @@ Poniżej prezentujemy listę zasobów dostępnych w GoldenLine API. API jest ci�
 
 Prace nad zasobami, których adresy URI są ~~przekreślone~~, nie zostały jeszcze ukończone.
 
-* `GET /api`
-* `GET /api/users/{id}` - Dane użytkownika o identyfikatorze {id}
-* `GET /api/me` - Dane obecnie autoryzowanego użytkownika
-* `GET /api/users/{id}/cv` - Plik PDF z CV użytkownika o identyfikatorze {id}
-* `GET /api/users/{id}/contacts` - Stronnicowana lista kontaktów użytkownika o identyfikatorze {id}
-* `GET /api/firms` - Stronnicowana lista firm
-* `GET /api/firms/{id}` - Dane firmy o identyfikatorze {id}
-* `GET /api/firms/{id}/employees` - Stronnicowana lista pracowników firmy o identyfikatorze {id}
-* `GET /api/job_ads` - Stronnicowana lista ofert pracy
-* `GET /api/job_ads/{id}` - Dane oferty pracy o identyfikatorze {id}
+* `GET /`
+* `GET /users/{id}` - Dane użytkownika o identyfikatorze {id}
+* `GET /me` - Dane obecnie autoryzowanego użytkownika
+* `GET /users/{id}/cv` - Plik PDF z CV użytkownika o identyfikatorze {id}
+* `GET /users/{id}/contacts` - Stronnicowana lista kontaktów użytkownika o identyfikatorze {id}
+* `GET /firms` - Stronnicowana lista firm
+* `GET /firms/{id}` - Dane firmy o identyfikatorze {id}
+* `GET /firms/{id}/employees` - Stronnicowana lista pracowników firmy o identyfikatorze {id}
+* `GET /job_ads` - Stronnicowana lista ofert pracy
+* `GET /job_ads/{id}` - Dane oferty pracy o identyfikatorze {id}
 
 ## Narzędzia
 
