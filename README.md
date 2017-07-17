@@ -6,9 +6,9 @@ Jako warstwę prezentacji wybraliśmy standard HAL, a autoryzację żądań do A
 
 ## Autoryzacja
 
-* [Pobieranie Access Tokena] (/authorization/retrieving_access_token.md)
-* [Odświeżanie Access Tokena] (/authorization/refreshing_access_token.md)
-* [Obsługa braku autoryzacji klienta] (/authorization/handling_declined_authorization.md)
+* [Pobieranie Access Tokena](/authorization/retrieving_access_token.md)
+* [Odświeżanie Access Tokena](/authorization/refreshing_access_token.md)
+* [Obsługa braku autoryzacji klienta](/authorization/handling_declined_authorization.md)
 
 ## Dostepne zasoby API
 
@@ -29,9 +29,9 @@ Prace nad zasobami, których adresy URI są ~~przekreślone~~, nie zostały jesz
 
 ## Narzędzia
 
-Z myślą o developerach stworzyliśmy aplikację pozwalającą w przyjemny sposób eksplorować nasze API. Aplikacja znajduje się pod adresem [https://www.goldenline.pl/aplikacja/hal-browser] (https://www.goldenline.pl/aplikacja/hal-browser)
+Z myślą o developerach stworzyliśmy aplikację pozwalającą w przyjemny sposób eksplorować nasze API. Aplikacja znajduje się pod adresem [https://www.goldenline.pl/aplikacja/hal-browser](https://www.goldenline.pl/aplikacja/hal-browser)
 
 ## Załączniki
 
-* [Specyfikacja standardu HAL] (http://tools.ietf.org/html/draft-kelly-json-hal-05)
-* [Specyfikacja standardu OAuth2] (http://tools.ietf.org/html/rfc6749)
+* [Specyfikacja standardu HAL](http://tools.ietf.org/html/draft-kelly-json-hal-05)
+* [Specyfikacja standardu OAuth2](http://tools.ietf.org/html/rfc6749)
