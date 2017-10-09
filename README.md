@@ -2,7 +2,7 @@
 
 Goldenline API jest to RESTowy interfejs pozwalający na interakcję z serwisem poprzez samodokumentujący się zestaw, linkujących między sobą, **zasobów** i **metod** pozwalających na ich modyfikację.
 
-Dostęp do API przydzielany jest w wybranych sytuacjach po przedstawieniu szczegółów dotyczących planowanego zastosowania.
+Dostęp do API przydzielany jest tylko klientom współpracującym z GoldenLine.
 
 Jako warstwę prezentacji wybraliśmy standard HAL, a autoryzację żądań do API powierzyliśmy mechanizmom OAuth2.
 
