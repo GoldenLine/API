@@ -22,7 +22,6 @@ Prace nad zasobami, których adresy URI są ~~przekreślone~~, nie zostały jesz
 * `GET /users/{id}` - Dane użytkownika o identyfikatorze {id}
 * `GET /me` - Dane obecnie autoryzowanego użytkownika
 * `GET /users/{id}/cv` - Plik PDF z CV użytkownika o identyfikatorze {id}
-* `GET /users/{id}/contacts` - Stronnicowana lista kontaktów użytkownika o identyfikatorze {id}
 * `GET /firms` - Stronnicowana lista firm
 * `GET /firms/{id}` - Dane firmy o identyfikatorze {id}
 * `GET /firms/{id}/employees` - Stronnicowana lista pracowników firmy o identyfikatorze {id}
